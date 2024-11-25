@@ -11,6 +11,7 @@ import { errorHandler } from './lib/middleware.js';
 import taskRouter from './routes/task.route.js';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
@@ -30,9 +31,9 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/image', cldRouter);
 
 // Simple test route
-app.use('/api', (req, res) => {
-  res.status(200).json({ message: 'Hello!' });
-});
+// app.use('/api', (req, res) => {
+//  res.status(200).json({ message: 'Hello!' });
+// });
 
 app.get('/', (req, res) => {
 res.status(200).json({ message: 'Welcome to Taskly API'});
@@ -46,7 +47,6 @@ app.use('*', (req, res) => {
 app.use(errorHandler);
 
 // Start server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
 console.log(`Сервер слушает на порту ${PORT}`);
 });
