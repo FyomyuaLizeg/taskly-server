@@ -1,6 +1,5 @@
 import express from 'express';
 import 'dotenv/config';
-import { db } from './lib/dbConnect.js';
 import userRouter from './routes/user.route.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
